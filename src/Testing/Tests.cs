@@ -27,6 +27,7 @@ namespace MemoryAndPerformance.Testing
                 TestRegexes,
 
                 TestTimerLeaks,         //Memory leaks
+                TestEventLeaks,
 
                 TestSlowFinally,        //Memory efficiency
                 TestTempVariable,
@@ -63,6 +64,11 @@ namespace MemoryAndPerformance.Testing
         private static void TestTimerLeaks()
         {
             TestHelper.Run(TimerThreadLeak.Start, false, true);
+        }
+
+        private static void TestEventLeaks()
+        {
+            TestHelper.Run(EventLeaks.Test, EventLeakType.Unsubscribe, EventLeakType.ExplicitNull, EventLeakType.DontUnsubscribe);
         }
 
         private static void TestSlowFinally()
